@@ -1,3 +1,138 @@
 <p>timeline works!</p>
 
 There are {{Milestones.length}} milestones and {{Phases.length}} phases;
+Total displayed days is {{TotalDays}}
+
+<svg [attr.viewBox]="[0, 0, Width, Height]" xmlns="http://www.w3.org/2000/svg">
+    <line class="timeline-axis"
+        x1='0'
+        [attr.y1]='Height/2'
+        [attr.x2]='Width'
+        [attr.y2]='Height/2'
+    ></line>
+    <line class="day-tick" *ngFor="let day of AllDays"
+        [attr.x1]='0'
+        [attr.y1]='Height/2'
+        [attr.x2]='0'
+        [attr.y2]='Height'
+    ></line>
+</svg>
+
+<svg viewBox="0,0,954,200">
+    <g transform="translate(0,100)" class="timeline" fill="none" font-size="10" font-family="sans-serif"
+        text-anchor="middle">
+        <path class="timeline-axis" stroke="currentColor" d="M40.5,6V0.5H924.5V6"></path>
+        <g class="day-tick" opacity="1" transform="translate(58.412100456621005,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">15</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(88.68607305936072,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">20</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(118.96004566210044,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">25</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(155.28881278538813,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">01</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(179.5079908675799,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">05</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(209.78196347031962,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">10</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(240.05593607305937,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">15</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(270.32990867579906,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">20</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(300.60388127853884,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">25</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(367.2066210045663,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">05</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(397.48059360730593,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">10</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(427.75456621004565,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">15</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(458.02853881278537,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">20</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(488.3025114155251,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">25</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(530.6860730593608,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">01</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(554.9052511415526,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">05</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(585.1792237442921,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">10</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(615.453196347032,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">15</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(645.7271689497718,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">20</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(676.0011415525114,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">25</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(706.2751141552511,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">01</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(730.4942922374429,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">05</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(760.7682648401826,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">10</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(791.0422374429223,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">15</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(821.3162100456622,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">20</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(851.5901826484019,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">25</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(893.7214611872146,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">01</text>
+        </g>
+        <g class="day-tick" opacity="1" transform="translate(917.9406392694063,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">05</text>
+        </g>
+        <g class="month" transform="translate(-26.602739726027394)">
+            <rect class="month-brace" x="-87.66837899543378" y="10" width="175.33675799086757" height="12.5" fill="teal"
+                fill-opacity="50%"></rect><text class="month-label" text-anchor="middle">November</text>
+        </g>
+        <g class="month" transform="translate(155.04109589041096)">
+            <rect class="month-brace" x="-90.69577625570777" y="10" width="181.39155251141554" height="12.5" fill="teal"
+                fill-opacity="50%"></rect><text class="month-label" text-anchor="middle">December</text>
+        </g>
+        <g class="month" transform="translate(342.73972602739724)">
+            <rect class="month-brace" x="-90.69577625570778" y="10" width="181.39155251141557" height="12.5" fill="teal"
+                fill-opacity="50%"></rect><text class="month-label" text-anchor="middle">January</text>
+        </g>
+        <g class="month" transform="translate(530.4383561643835)">
+            <rect class="month-brace" x="-84.64098173515981" y="10" width="169.28196347031962" height="12.5" fill="teal"
+                fill-opacity="50%"></rect><text class="month-label" text-anchor="middle">February</text>
+        </g>
+        <g class="month" transform="translate(706.0273972602739)">
+            <rect class="month-brace" x="-90.56963470319636" y="10" width="181.1392694063927" height="12.5" fill="teal"
+                fill-opacity="50%"></rect><text class="month-label" text-anchor="middle">March</text>
+        </g>
+        <g class="month" transform="translate(893.7260273972602)">
+            <rect class="month-brace" x="-87.54223744292256" y="10" width="175.0844748858451" height="12.5" fill="teal"
+                fill-opacity="50%"></rect><text class="month-label" text-anchor="middle">April</text>
+        </g>
+        <g class="year-tick" opacity="1" transform="translate(342.98744292237444,0)">
+            <line stroke="currentColor" y2="6"></line><text fill="currentColor" y="10" dy="0.71em">2020</text>
+            <circle fill="currentColor" cx="-2" cy="1" r="5"></circle>
+        </g>
+    </g>
+</svg>
