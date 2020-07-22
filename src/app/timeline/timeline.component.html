@@ -1,7 +1,6 @@
 <p>timeline works!</p>
 
-There are {{Milestones.length}} milestones and {{Phases.length}} phases;
-Total displayed days is {{TotalDays}}
+There are {{Milestones.length}} milestones and {{Phases.length}} phases
 
 <svg [attr.viewBox]="[0, 0, Width, Height]" xmlns="http://www.w3.org/2000/svg">
     <line class="timeline-axis"
@@ -10,12 +9,10 @@ Total displayed days is {{TotalDays}}
         [attr.x2]='Width'
         [attr.y2]='Height/2'
     ></line>
-    <line class="day-tick" *ngFor="let day of AllDays"
-        [attr.x1]='0'
-        [attr.y1]='Height/2'
-        [attr.x2]='0'
-        [attr.y2]='Height'
-    ></line>
+    <g class="day-tick" *ngFor="let dayTick of Timeline.dayTicks" [attr.transform]="'translate('+ dayTick.x+', '+Height/2+')'">
+        <line [attr.y2]="4" ></line>
+        <text [attr.dx]="-6" [attr.dy]="18">{{dayTick.label}}</text>
+    </g>
 </svg>
 
 <svg viewBox="0,0,954,200">
