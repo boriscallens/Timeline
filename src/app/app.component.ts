@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IMilestone } from './timeline/milestone.model';
-import { IPhase } from './timeline/phase/phase.model';
+import { IMilestone } from './timeline/models/milestone.model';
+import { IPhase } from './timeline/models/phase.model';
 
 @Component({
   selector: 'app-root',

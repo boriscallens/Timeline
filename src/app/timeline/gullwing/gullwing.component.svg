@@ -1,6 +1,0 @@
-<!-- <svg [attr.viewBox]="[0, 0, Width, Height]" xmlns="http://www.w3.org/2000/svg">
-    <g class='gullwing'>
-        <path [attr.d]='this.path'>
-        </path>
-    </g>
-</svg> -->

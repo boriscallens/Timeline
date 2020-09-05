@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IPhase} from './phase/phase.model';
-import { IMilestone} from './milestone.model';
-import { Timeline} from './timeline.model';
+import { IPhase} from './models/phase.model';
+import { IMilestone} from './models/milestone.model';
+import { Timeline} from './models/timeline.model';
 
 @Component({
   selector: 'app-timeline',

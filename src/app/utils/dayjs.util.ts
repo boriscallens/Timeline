@@ -1,8 +1,8 @@
 import * as dayjs from 'dayjs';
 import * as minMax from 'dayjs/plugin/minMax';
 import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
-import { IMilestone } from '../timeline/milestone.model';
-import { IPhase } from '../timeline/phase/phase.model';
+import { IMilestone } from '../timeline/models/milestone.model';
+import { IPhase } from '../timeline/models/phase.model';
 
 /**
  * getRange finds the minimum and maximum days of a set of days and then returns an array of all the days in between these

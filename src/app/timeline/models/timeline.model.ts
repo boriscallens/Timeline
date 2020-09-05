@@ -1,11 +1,11 @@
 import * as dayjs from 'dayjs';
 
-import { DateRange, getMonths } from '../utils/dayjs.util';
-import { getGullWingPath } from '../utils/svg.util';
+import { DateRange, getMonths } from '../../utils/dayjs.util';
+import { getGullWingPath } from '../../utils/svg.util';
 
 import { IMilestone } from './milestone.model';
 import { IAxis } from './axis.model';
-import { IPhase } from './phase/phase.model';
+import { IPhase } from './phase.model';
 
 export class Timeline {
 
