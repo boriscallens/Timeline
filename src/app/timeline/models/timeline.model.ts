@@ -8,14 +8,12 @@ import { IAxis } from './axis.model';
 import { IPhase } from './phase.model';
 
 export class Timeline {
-
     axis: IAxis;
 
-    dayTicks: ITick[];
+    dayTicks: IDayTick[];
     monthMarks: IMark[];
+    phaseMarks: IMark[];
     milestoneTicks: (ITick & IMilestone)[];
-    phaseTicks: IMark[];
-
 
     constructor(
         private milestones: IMilestone[],
@@ -36,17 +34,21 @@ export class Timeline {
         } as IAxis;
     }
 
-    public getDayTicks(range: DateRange, filter: number[]): ITick[] {
+    public getDayTicks(range: DateRange, filter: number[]): IDayTick[] {
         const filteredDays = range.days.filter(d => filter.includes(d.date()));
-        return filteredDays.map<ITick>(d => this.getDayTick(d, range));
+        return filteredDays.map(d => this.getDayTick(d, range));
     }
-    public getDayTick(day: dayjs.Dayjs, range: DateRange): ITick {
+    public getDayTick(day: dayjs.Dayjs, range: DateRange): IDayTick {
         const isStartOfYear = day.startOf('y').isSame(day, 'day');
+        const isStartOfMonth = day.startOf('M').isSame(day, 'day');
+
         return {
             label: isStartOfYear ? day.format('YYYY') : day.format('DD'),
+            isStartOfYear,
+            isStartOfMonth,
             labelX: isStartOfYear ? -14 : -6,
             transform: `translate(${range.getX(day)}, ${this.height / 2})`
-        } as ITick;
+        } as IDayTick;
     }
     public getMonthMarks(range: DateRange): IMark[] {
         return getMonths(range.days).map(month => {
@@ -67,18 +69,12 @@ export class Timeline {
         const tick = {
             label: milestone.name,
             transform: `translate(${range.getXUTC(milestone.dateUTC)}, ${0})`
-            // transform: `translate(${range.getXUTC(milestone.dateUTC)}, ${0})`
         } as ITick;
         return {... milestone, ... tick} as ITick & IMilestone;
     }
     public getPhaseTick(phase: IPhase, range: DateRange, height: number): IMark {
-        console.log(height);
         return {
             label: phase.name,
-            x1: range.getXUTC(phase.startUTC),
-            y1: 0,
-            x2: range.getXUTC(phase.endUTC),
-            y2: height,
             transform: `translate(${range.getXUTC(phase.startUTC)}, ${height / 2})`
         } as IMark;
     }
@@ -90,20 +86,18 @@ export class Timeline {
 
 export interface ITick {
     label: string;
-    x: number;
-    transform: string;
     labelX: number;
+    transform: string;
+}
+export interface IDayTick extends ITick {
+    isStartOfYear: boolean;
+    isStartOfMonth: boolean;
 }
 export interface IMark {
     label: string;
-    x1: number;
-    y1: number;
-
-    x2: number;
-    y2: number;
-
-    transform: string;
     labelX: number;
     labelY: number;
+
+    transform: string;
     path: string;
 }

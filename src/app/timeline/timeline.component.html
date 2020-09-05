@@ -17,8 +17,8 @@ And {{Phases.length}} phases.
     ></line>
 
     <g class="timeline-day-tick" *ngFor="let dayTick of Timeline.dayTicks" [attr.transform]="dayTick.transform">
-        <circle class='first-of-month' *ngIf="dayTick.label==='01'" r=2></circle>
-        <circle class='first-of-year' *ngIf="dayTick.label.length === 4" r=3></circle>
+        <circle class='start-of-month' *ngIf="dayTick.isStartOfMonth" r=2></circle>
+        <circle class='start-of-year' *ngIf="dayTick.isStartOfYear" r=3></circle>
         <line [attr.y2]="3"></line>
         <text [attr.dx]="dayTick.labelX" [attr.dy]="18">{{dayTick.label}}</text>
     </g>
