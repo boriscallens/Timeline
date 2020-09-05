@@ -1,6 +1,8 @@
 import * as dayjs from 'dayjs';
 import * as minMax from 'dayjs/plugin/minMax';
 import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
+import { IMilestone } from '../timeline/milestone.model';
+import { IPhase } from '../timeline/phase/phase.model';
 
 /**
  * getRange finds the minimum and maximum days of a set of days and then returns an array of all the days in between these
@@ -38,3 +40,42 @@ export const getX = (day: dayjs.Dayjs, days: dayjs.Dayjs[], maximumX: number): n
   const nthDay = day.diff(minDay, 'day');
   return ratio * nthDay;
 };
+
+export class DateRange {
+  days: dayjs.Dayjs[];
+  numberOfDays: number;
+
+  firstDay: dayjs.Dayjs;
+  lastDay: dayjs.Dayjs;
+
+  width: number;
+  unitesPerDay: number;
+
+  constructor(milestones: IMilestone[], phases: IPhase[], width: number) {
+    dayjs.extend(minMax);
+
+    const dates = milestones
+      .map(m => m.dateUTC)
+      .concat(phases.flatMap(p => [p.startUTC, p.endUTC]))
+      .map(dateUTC => dayjs(dateUTC));
+
+    this.days = getRange(dates);
+    this.firstDay = dayjs.min(this.days);
+    this.lastDay = dayjs.max(this.days);
+    this.width = width;
+    this.unitesPerDay = this.width / this.days.length;
+  }
+
+  /**
+   * getX finds where on the range a given date falls expressed in the unit of width
+   */
+  public getX(day: dayjs.Dayjs): number{
+    const nthDay = day.diff(this.firstDay, 'day');
+    return this.unitesPerDay * nthDay;
+  }
+
+  public getXUTC(dateUtc: number): number{
+    const day = dayjs(dateUtc);
+    return this.getX(day);
+  }
+}

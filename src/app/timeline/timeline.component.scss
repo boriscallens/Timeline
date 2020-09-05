@@ -1,9 +1,32 @@
-.timeline-axis{
+.timeline-axis {
     stroke: #141;
     stroke-width: 2;
 }
-.day-tick{
-    stroke: #141;
-    stroke-width: 1;
+
+
+.timeline-day-tick {
     font-size: 0.75rem;
 }
+.timeline-day-tick > line {
+    stroke: #141;
+    stroke-width: 1;
+    stroke-linecap: round;
+}
+
+.timeline-milestone-tick {
+    font-size: 1rem;
+    stroke: white;
+}
+.timeline-milestone-tick > rect{
+    fill: blue;
+}
+
+.timeline-milestone-tick > line{
+    stroke: #141;
+    stroke-width: 0.2rem;
+    stroke-dasharray: 0.30rem;
+}
+
+// .timeline-milestone-tick > text {
+//     background-color: #37a70b;
+// }

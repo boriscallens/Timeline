@@ -339,16 +339,6 @@
   </div>
 
   <h2>Timeline!</h2>
-  <div class="dates">
-    <ul class="dates-milestones">
-      <li *ngFor="let milestone of this.milestones">{{milestone.name}} at {{milestone.dateUTC | date:'yyyy-MM-dd hh:mm'}}</li>
-    </ul>
-    <ul class="dates-phases" >
-      <li *ngFor="let phase of this.phases">{{phase.name}} from {{phase.startUTC | date:'yyyy-MM-dd hh:mm'}} to {{phase.endUTC | date:'yyyy-MM-dd hh:mm'}}</li>
-    </ul>
-  </div>
-
-
 
   <app-timeline [Milestones]=this.milestones [Phases]=this.phases></app-timeline>
 

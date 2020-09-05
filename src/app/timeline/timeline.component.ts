@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IPhase} from './phase.model';
+import { IPhase} from './phase/phase.model';
 import { IMilestone} from './milestone.model';
 import { Timeline} from './timeline.model';
 
@@ -20,6 +20,6 @@ export class TimelineComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.Timeline = new Timeline(this.Milestones, this.Phases, this.Width);
+    this.Timeline = new Timeline(this.Milestones, this.Phases, this.Width, this.Height);
   }
 }
