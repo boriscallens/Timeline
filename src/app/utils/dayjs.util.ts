@@ -26,6 +26,31 @@ export const getRange = (days: dayjs.Dayjs[]): dayjs.Dayjs[] => {
 };
 
 /**
+ * getMonths returns month metadata for days passed
+ * @param days A set of days for which to create IMonths
+ */
+export const getMonths = (days: dayjs.Dayjs[]): IMonth[] => {
+  dayjs.extend(minMax);
+
+  const daysByMonth = days.reduce((dict, day: dayjs.Dayjs) => {
+    const month = day.month();
+    (dict[month] = dict[month] || []).push(day);
+    return dict;
+  }, {});
+
+  return Object.keys(daysByMonth)
+    .map(month => daysByMonth[month])
+    .map(daysForMonth => dayjs.min(daysForMonth))
+    .map(day => {
+      return {
+        label: day.format('MMM'),
+        firstDay: day.startOf('M'),
+        lastDay: day.endOf('M').startOf('d')
+      } as IMonth;
+    });
+};
+
+/**
  * getX finds where on the axis a given date falls in a set range of dates
  */
 export const getX = (day: dayjs.Dayjs, days: dayjs.Dayjs[], maximumX: number): number => {
@@ -47,6 +72,8 @@ export class DateRange {
 
   firstDay: dayjs.Dayjs;
   lastDay: dayjs.Dayjs;
+
+  months: IMonth[];
 
   width: number;
   unitesPerDay: number;
@@ -78,4 +105,10 @@ export class DateRange {
     const day = dayjs(dateUtc);
     return this.getX(day);
   }
+}
+
+export interface IMonth {
+  label: string;
+  firstDay: dayjs.Dayjs;
+  lastDay: dayjs.Dayjs;
 }

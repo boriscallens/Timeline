@@ -9,22 +9,6 @@ And {{Phases.length}} phases.
 </ul>
 
 <svg [attr.viewBox]="[0, 0, Width, Height]" xmlns="http://www.w3.org/2000/svg">
-
-
-    <!-- <defs>
-        <filter x="-0.1" y="-0.1" width="1.2" height="1.2" id="solid">
-            <feFlood flood-color="#37a70b"/>
-            <feComposite in="SourceGraphic" operator="xor" />
-        </filter>
-        <filter x="0" y="0" width="1" height="1" id="solid2">
-            <feFlood flood-color="#37a70b"></feFlood>
-            <feComposite in="SourceGraphic" operator="atop"></feComposite>
-        </filter>
-        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M 0 0 L 10 5 L 0 10 z"></path>
-        </marker>
-    </defs> -->
-
     <line class="timeline-axis"
         [attr.x1]='this.Timeline.axis.x1'
         [attr.y1]='this.Timeline.axis.y1'
@@ -33,19 +17,19 @@ And {{Phases.length}} phases.
     ></line>
 
     <g class="timeline-day-tick" *ngFor="let dayTick of Timeline.dayTicks" [attr.transform]="dayTick.transform">
+        <circle class='first-of-month' *ngIf="dayTick.label==='01'" r=2></circle>
+        <circle class='first-of-year' *ngIf="dayTick.label.length === 4" r=3></circle>
         <line [attr.y2]="3"></line>
-        <text [attr.dx]="-6" [attr.dy]="18">{{dayTick.label}}</text>
+        <text [attr.dx]="dayTick.labelX" [attr.dy]="18">{{dayTick.label}}</text>
     </g>
-    <g timeline-phase
-        [height]='this.Height/2'
-        [width]= 100
-        [phase]='this.Phases[0]'>
+    <g class="timeline-month-mark" *ngFor="let monthMark of Timeline.monthMarks" [attr.transform]="monthMark.transform">
+        <text [attr.x]='monthMark.labelX'
+            [attr.y]='monthMark.labelY'
+            dominant-baseline="middle"
+            text-anchor="middle"
+        >{{monthMark.label}}</text>
+        <path class='gullwings' [attr.d]='monthMark.path'></path>
     </g>
-    <!-- <g class="timeline-milestone-tick" *ngFor="let milestone of Timeline.milestoneTicks" [attr.transform]="milestone.transform">
-        <rect rx=5 width=150 [attr.height]="Height/4"></rect>
-        <text [attr.dy]="18">{{milestone.label}}</text>
-        <line [attr.y1]="25" [attr.y2]="Height/2" ></line>
-    </g> -->
 </svg>
 
 <svg viewBox="0,0,954,200">

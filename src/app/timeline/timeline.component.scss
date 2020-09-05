@@ -3,7 +3,6 @@
     stroke-width: 2;
 }
 
-
 .timeline-day-tick {
     font-size: 0.75rem;
 }
@@ -27,6 +26,15 @@
     stroke-dasharray: 0.30rem;
 }
 
-// .timeline-milestone-tick > text {
-//     background-color: #37a70b;
-// }
+.timeline-month-mark > text {
+    font-size: 0.6rem;
+}
+.timeline-month-mark .gullwings {
+    fill:none;
+    stroke: #EF7A53;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-miterlimit:4;
+    stroke-dasharray:none;
+    stroke-opacity:1
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { IPhase } from './phase.model';
-import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
+import { Timeline } from '../timeline.model';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -11,11 +12,16 @@ import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/u
 export class PhaseComponent implements OnInit {
 
   @Input()
+  timeline: Timeline;
+  @Input()
   phase: IPhase;
+
   @Input()
   height: number;
   @Input()
   width: number;
+
+
 
   labelX = 20;
   labelY = 20;
@@ -25,6 +31,12 @@ export class PhaseComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+
+    this.DrawGullwings();
+  }
+
+  private DrawGullwings(): void {
     const gullMargin = 0.5;
     const gullwingHeight = this.height / 2;
     const tipHeight = gullwingHeight / 3;
