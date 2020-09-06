@@ -16,7 +16,7 @@ export class TimelineComponent implements OnInit {
   Timeline: Timeline;
 
   Width = 954;
-  Height = 100;
+  Height = 300;
   constructor() { }
 
   ngOnInit(): void {

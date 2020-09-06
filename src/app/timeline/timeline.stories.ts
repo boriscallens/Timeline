@@ -1,7 +1,7 @@
 import { moduleMetadata } from '@storybook/angular';
 
-import { IPhase } from './phase.model';
-import { IMilestone } from './milestone.model';
+import { IPhase } from './models/phase.model';
+import { IMilestone } from './models/milestone.model';
 import { TimelineModule } from './timeline.module';
 import { TimelineComponent } from './timeline.component';
 

@@ -16,8 +16,11 @@ And {{Phases.length}} phases.
         [attr.y2]='this.Timeline.axis.y2'
     ></line>
 
-    <g class="timeline-day-tick" *ngFor="let dayTick of Timeline.dayTicks" [attr.transform]="dayTick.transform">
-        <circle class='start-of-month' *ngIf="dayTick.isStartOfMonth" r=2></circle>
+    <g class="timeline-day-tick"
+        [ngClass]="{'start-of-year': dayTick.isStartOfYear, 'start-of-month': dayTick.isStartOfMonth}"
+        *ngFor="let dayTick of Timeline.dayTicks"
+        [attr.transform]="dayTick.transform">
+        <circle *ngIf="dayTick.isStartOfMonth" r=2></circle>
         <circle class='start-of-year' *ngIf="dayTick.isStartOfYear" r=3></circle>
         <line [attr.y2]="3"></line>
         <text [attr.dx]="dayTick.labelX" [attr.dy]="18">{{dayTick.label}}</text>
@@ -28,6 +31,14 @@ And {{Phases.length}} phases.
             dominant-baseline="middle"
             text-anchor="middle"
         >{{monthMark.label}}</text>
-        <path class='gullwings' [attr.d]='monthMark.path'></path>
+        <path class='gullwings' [attr.d]='monthMark.path' transform='translate(0,16)'></path>
+    </g>
+    <g class="timeline-phase-mark" *ngFor="let phaseMark of Timeline.phaseMarks" [attr.transform]="phaseMark.transform">
+        <text [attr.x]='phaseMark.labelX'
+            [attr.y]='phaseMark.labelY'
+            dominant-baseline="middle"
+            text-anchor="middle"
+        >{{phaseMark.label}}</text>
+        <path class='gullwings' [attr.d]='phaseMark.path' [attr.transform]='phaseMark.pathTransform'></path>
     </g>
 </svg>

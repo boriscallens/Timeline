@@ -11,13 +11,9 @@
     stroke-width: 1;
     stroke-linecap: round;
 }
-
-.timeline-milestone-tick {
-    font-size: 1rem;
-    stroke: white;
-}
-.timeline-milestone-tick > rect{
-    fill: blue;
+.start-of-year {
+    font-size: 0.85rem;
+    font-weight: bold;
 }
 
 .timeline-milestone-tick > line{
@@ -37,4 +33,41 @@
     stroke-miterlimit:4;
     stroke-dasharray:none;
     stroke-opacity:1
+}
+
+.timeline-phase-mark .gullwings {
+    fill-opacity: 10%;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-miterlimit:4;
+    stroke-dasharray:none;
+    stroke-opacity:1
+}
+
+.timeline-phase-mark:nth-of-type(3n+0) {
+    fill: #FA0303;
+}
+.timeline-phase-mark:nth-of-type(3n+0) .gullwings {
+    stroke: #FA0303;
+}
+
+.timeline-phase-mark:nth-of-type(3n+1) {
+    fill: #8900F5;
+}
+.timeline-phase-mark:nth-of-type(3n+1) .gullwings {
+    stroke: #8900F5;
+}
+.timeline-phase-mark:nth-of-type(3n+2) {
+    fill: #F6842B;
+}
+.timeline-phase-mark:nth-of-type(3n+2) .gullwings {
+    stroke: #EF7A53;
+}
+
+.timeline-milestone-tick {
+    font-size: 1rem;
+    stroke: white;
+}
+.timeline-milestone-tick > rect{
+    fill: blue;
 }
