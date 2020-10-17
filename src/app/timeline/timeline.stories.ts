@@ -20,6 +20,7 @@ export const withText = () => ({
   props: {
     Phases : [
       {name: 'registration', startUTC: Date.UTC(2019, 10, 12), endUTC: Date.UTC(2020, 3, 6)},
+      {name: 'another event', startUTC: Date.UTC(2020, 0, 12), endUTC: Date.UTC(2020, 2, 6)},
       {name: 'decision', startUTC: Date.UTC(2020, 1, 27), endUTC: Date.UTC(2020, 3, 6)},
       {name: 'hidden week', startUTC: Date.UTC(2020, 2, 28), endUTC: Date.UTC(2020, 3, 6)},
     ] as IPhase[],
