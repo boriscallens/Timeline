@@ -14,6 +14,7 @@ export class AppComponent {
   phases = [
     {name: 'registration', startUTC: Date.UTC(2019, 10, 12), endUTC: Date.UTC(2020, 3, 6)},
     {name: 'decision', startUTC: Date.UTC(2020, 1, 27), endUTC: Date.UTC(2020, 3, 6)},
+    {name: 'overlapping phase', startUTC: Date.UTC(2020, 1, 27), endUTC: Date.UTC(2020, 3, 6)},
     {name: 'hidden week', startUTC: Date.UTC(2020, 2, 28), endUTC: Date.UTC(2020, 3, 6)},
   ] as IPhase[];
   // Watch out! Months are the only datepart that is 0 based :O

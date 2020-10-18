@@ -42,4 +42,20 @@ And {{Phases.length}} phases.
         >{{phaseMark.label}}</text>
         <path class='gullwings' [attr.d]='phaseMark.path' [attr.transform]='phaseMark.pathTransform'></path>
     </g>
+    <g class="timeline-milestone-tick"
+        *ngFor="let milestoneTick of Timeline.milestoneTicks"
+        [attr.transform]="milestoneTick.transform">
+        <circle r=2></circle>
+        <line [attr.y2]="-30"></line>
+        <path [attr.transform]='milestoneTick.triangleTransform'
+            [attr.d]='milestoneTick.trianglePath'>
+        </path>
+        <g [attr.transform]='milestoneTick.labelTransform'>
+            <rect width="150" height="30" rx="5" x=-75 y=-35/>
+            <text dominant-baseline="middle" y=-20
+                text-anchor="middle">
+                {{milestoneTick.label}}
+            </text>
+        </g>
+    </g>
 </svg>

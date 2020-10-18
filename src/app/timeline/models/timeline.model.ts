@@ -13,7 +13,7 @@ export class Timeline {
     dayTicks: IDayTick[];
     monthMarks: IMark[];
     phaseMarks: IMark[];
-    milestoneTicks: (ITick & IMilestone)[];
+    milestoneTicks: IMilestoneTick[];
 
     constructor(
         private milestones: IMilestone[],
@@ -25,7 +25,7 @@ export class Timeline {
         this.dayTicks = this.getDayTicks(range, [1, 5, 10, 15, 20, 25]);
         this.monthMarks = this.getMonthMarks(range);
         this.phaseMarks = this.getPhaseMarks(phases, range);
-        this.milestoneTicks = this.milestones.map(milestone => this.getMilestoneTick(milestone, range)).slice(0, 1);
+        this.milestoneTicks = this.getMilestoneTicks(milestones, range);
 
         this.axis = {
             x1: 0,
@@ -34,6 +34,7 @@ export class Timeline {
             y2: height / 2,
         } as IAxis;
     }
+
 
     public getDayTicks(range: DateRange, filter: number[]): IDayTick[] {
         const filteredDays = range.days.filter(d => filter.includes(d.date()));
@@ -84,13 +85,18 @@ export class Timeline {
             } as IMark;
         });
     }
-
-    public getMilestoneTick(milestone: IMilestone, range: DateRange): ITick & IMilestone {
-        const tick = {
-            label: milestone.name,
-            transform: `translate(${range.getXUTC(milestone.dateUTC)}, ${0})`
-        } as ITick;
-        return {... milestone, ... tick} as ITick & IMilestone;
+    public getMilestoneTicks(milestones: IMilestone[], range: DateRange): IMilestoneTick[] {
+        return milestones.slice(0, 1).map((milestone) => {
+            const x = range.getXUTC(milestone.dateUTC);
+            const y = (this.height / 2) - 4;
+            return {
+                label: milestone.name,
+                labelTransform: `translate(0, -25)`,
+                trianglePath: 'M 0 0 l 5, -5 l -10 0 Z',
+                triangleTransform: `translate(0, -25)`,
+                transform: `translate(${x}, ${y})`
+            } as IMilestoneTick;
+        });
     }
 }
 
@@ -102,6 +108,11 @@ export interface ITick {
 export interface IDayTick extends ITick {
     isStartOfYear: boolean;
     isStartOfMonth: boolean;
+}
+export interface IMilestoneTick extends ITick {
+    trianglePath: string;
+    triangleTransform: string;
+    labelTransform: string;
 }
 export interface IMark {
     label: string;

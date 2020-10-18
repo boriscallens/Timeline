@@ -21,12 +21,6 @@
     font-weight: bold;
 }
 
-.timeline-milestone-tick > line{
-    stroke: #141;
-    stroke-width: 0.2rem;
-    stroke-dasharray: 0.30rem;
-}
-
 .timeline-month-mark > text {
     font-size: 0.6rem;
 }
@@ -70,9 +64,16 @@
 }
 
 .timeline-milestone-tick {
+    fill: #1898E0;
+    stroke: #1898E0;
+}
+
+.timeline-milestone-tick > line{
+    stroke-width: 0.10rem;
+    stroke-dasharray: 0.40rem;
+}
+.timeline-milestone-tick text {
     font-size: 1rem;
     stroke: white;
-}
-.timeline-milestone-tick > rect{
-    fill: blue;
+    fill: white;
 }
